@@ -2,18 +2,18 @@
 
 ## Current Infrastructure
 
-[MLflow server](http://ec2-13-59-28-75.us-east-2.compute.amazonaws.com/#/)
+[MLflow server](TBD)
 
 - Docker container that launches MLflow with Nginx as server proxy
 - Internal Backend with SQlite as DB
-- Cronjob to sync Backend in [S3](https://s3.console.aws.amazon.com/s3/buckets/flixtech-primus-dev-mlflow-runs?region=us-east-2&prefix=backend_database/&showversions=false)
-- External artifacts root in [S3](https://s3.console.aws.amazon.com/s3/buckets/flixtech-primus-dev-mlflow-runs?region=us-east-2)
+- Cronjob to sync Backend in [S3](TBD)
+- External artifacts root in [S3](TBD)
 
 ## Desired Infrastructure
 ![MLflow server infra](images/mlflow_server.png)
 
 ## How to set up
-- launch Linux AMI instance type with relevant Security Groups 3 and 4 ([MLflow server setup](https://wiki.mfb.io/display/CRM/How+to%3A+AD+-+Set+up+EC2+cluster+for+MLflow+and+for+distributed+training+with+Ray+Tune))
+- launch Linux AMI instance type with relevant Security Groups to be accessible externally via HTTPS
 - add IAM role to have access on AWS S3
 - install git, and clone this repository
 ```

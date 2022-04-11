@@ -33,9 +33,9 @@ services:
         environment:
             - LOCAL_DIR=database
             - BACKEND_URI=sqlite:///${LOCAL_DIR}/mlruns.db
-            - ARTIFACT_ROOT=s3://flixtech-primus-dev-mlflow-runs/test
+            - ARTIFACT_ROOT=TBD
             - DATABASE_LOCATION=/home/ec2-user/data/
-            - S3_DATABASE_LOCATION=s3://flixtech-primus-dev-mlflow-runs/backend_database/
+            - S3_DATABASE_LOCATION=TBD
         # todo: link external locations (e.g. S3) to effective locations in S3 if any changes
 
     nginx:

@@ -1,5 +1,5 @@
 FROM python:3.8.5
-LABEL maintainer="Andrea Tamburri andrea.tamburri@flixbus.com"
+LABEL maintainer="Andrea Tamburri atamburriandrea1@gmail.com"
 ARG MLFLOW_VERSION=1.19.0
 
 WORKDIR .
@@ -9,7 +9,7 @@ RUN pip install boto3 sqlalchemy==1.4.26
 
 ENV LOCAL_DIR database
 ENV BACKEND_URI sqlite:///${LOCAL_DIR}/mlruns.db
-ENV ARTIFACT_ROOT s3://flixtech-primus-dev-mlflow-runs/ad-mlflow-runs
+ENV ARTIFACT_ROOT TBD
 
 RUN mkdir -p ${LOCAL_DIR}/
 
