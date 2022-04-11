@@ -1,5 +1,7 @@
 # mlflow-server
 
+Please note: this infrastructure requires some environs to set (e.g. the location where to store the backend DB in S3 or the URL of the tracking server).
+Before running it it is necessary to solve all the required environs with TBD as value
 ## Current Infrastructure
 
 [MLflow server](TBD)
