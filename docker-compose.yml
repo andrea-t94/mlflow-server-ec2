@@ -1,0 +1,60 @@
+version: '3.3'
+
+services:
+# todo: add external db
+#    db:
+#        restart: always
+#        image: mysql/mysql-server:5.7.28
+#        container_name: mlflow_db
+#        expose:
+#            - "3306"
+#        networks:
+#            - backend
+#        environment:
+#            - MYSQL_DATABASE=${MYSQL_DATABASE}
+#            - MYSQL_USER=${MYSQL_USER}
+#            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+#            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+#        volumes:
+#            - dbdata:/var/lib/mysql
+
+    web:
+        restart: always
+        build: ./mlflow-server
+        image: mlflow_server
+        container_name: mlflow_server
+        expose:
+            - "5000"
+#        ports:
+#            - "5000:5000"
+        networks:
+            - frontend
+            - backend
+        environment:
+            - LOCAL_DIR=database
+            - BACKEND_URI=sqlite:///${LOCAL_DIR}/mlruns.db
+            - ARTIFACT_ROOT=s3://flixtech-primus-dev-mlflow-runs/test
+            - DATABASE_LOCATION=/home/ec2-user/data/
+            - S3_DATABASE_LOCATION=s3://flixtech-primus-dev-mlflow-runs/backend_database/
+        # todo: link external locations (e.g. S3) to effective locations in S3 if any changes
+
+    nginx:
+        restart: always
+        build: ./nginx
+        image: mlflow_nginx
+        container_name: mlflow_nginx
+        ports:
+            - "80:80"
+        networks:
+            - frontend
+        depends_on:
+            - web
+
+networks:
+    frontend:
+        driver: bridge
+    backend:
+        driver: bridge
+
+#volumes:
+#    dbdata:
