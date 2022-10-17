@@ -32,7 +32,7 @@ Before running it it is necessary to solve all the required environs with TBD as
     sudo service crond start
     crontab -e
 ```  
-- cronjob to include inside the crontab
+- cronjob to include inside the crontab (please note: hardcoded S3_DATABASE_LOCATION since it's not working properly)
 ```
     SHELL=/bin/sh
     PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/ec2-user/.local/bin:/home/ec2-user/bin
