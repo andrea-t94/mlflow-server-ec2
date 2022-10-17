@@ -1,6 +1,6 @@
 FROM python:3.8.5
 LABEL maintainer="Andrea Tamburri atamburriandrea1@gmail.com"
-ARG MLFLOW_VERSION=1.19.0
+ARG MLFLOW_VERSION=1.29.0
 
 WORKDIR .
 RUN pip install --no-cache-dir mlflow==$MLFLOW_VERSION
