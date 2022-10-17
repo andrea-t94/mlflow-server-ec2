@@ -25,18 +25,14 @@ services:
         container_name: mlflow_server
         expose:
             - "5000"
-#        ports:
-#            - "5000:5000"
         networks:
             - frontend
             - backend
         environment:
-            - LOCAL_DIR=database
-            - BACKEND_URI=sqlite:///${LOCAL_DIR}/mlruns.db
-            - ARTIFACT_ROOT=TBD
-            - DATABASE_LOCATION=/home/ec2-user/data/
-            - S3_DATABASE_LOCATION=TBD
-        # todo: link external locations (e.g. S3) to effective locations in S3 if any changes
+            - BACKEND_URI=sqlite://${LOCAL_DIR}/${MLFLOW_DB_NAME}
+            - ARTIFACT_ROOT=${S3_ARTIFACT_ROOT}
+        volumes:
+            - mlflow_db:${LOCAL_DIR}
 
     nginx:
         restart: always
@@ -56,5 +52,5 @@ networks:
     backend:
         driver: bridge
 
-#volumes:
-#    dbdata:
+volumes:
+   mlflow_db:

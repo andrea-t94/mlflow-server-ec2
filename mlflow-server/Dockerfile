@@ -9,7 +9,6 @@ RUN pip install boto3 sqlalchemy==1.4.26
 
 ENV LOCAL_DIR database
 ENV BACKEND_URI sqlite:///${LOCAL_DIR}/mlruns.db
-ENV ARTIFACT_ROOT TBD
 
 RUN mkdir -p ${LOCAL_DIR}/
 
